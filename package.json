@@ -28,12 +28,12 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/polymer940c/frontend-takehome.git"
+    "url": "git+https://github.com/polymer940c/say-frontend-takehome.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/polymer940c/frontend-takehome/issues"
+    "url": "https://github.com/polymer940c/say-frontend-takehome/issues"
   },
-  "homepage": "https://github.com/polymer940c/frontend-takehome#readme"
+  "homepage": "https://github.com/polymer940c/say-frontend-takehome#readme"
 }
