@@ -24,11 +24,12 @@ class App extends Component {
       .then(function (res) {
         const { data } = res;
         const posts = data.data.children.map(child => {
-          // console.log(child.data);
+          console.log(child.data);
           const { author, created, subreddit, ups, thumbnail, url, title } = child.data
           let post = {
             author, created, subreddit, ups, thumbnail, url, title
           }
+          post.created = new Date(post.created).toLocaleDateString("en-US");
           return post;
         })
         current.setState({ posts })
@@ -38,11 +39,12 @@ class App extends Component {
       });
   }
   render() {
+    const { posts } = this.state
     return (
       <div className='app'>
         <div>header</div>
         <div>body</div>
-        {this.state.posts.length !== 0 && <Reddit posts={this.state.posts} />}
+        {posts.length !== 0 && <Reddit posts={posts} />}
         <div>footer</div>
       </div>
     );
