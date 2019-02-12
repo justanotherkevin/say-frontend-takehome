@@ -19,18 +19,19 @@ class App extends Component {
   }
   componentDidMount() {
     const redditEndpoint = "https://www.reddit.com/.json";
+    const current = this;
     axios.get(redditEndpoint)
       .then(function (res) {
         const { data } = res;
         const posts = data.data.children.map(child => {
           // console.log(child.data);
           const { author, created, subreddit, ups, thumbnail, url, title } = child.data
-          const post = {
+          let post = {
             author, created, subreddit, ups, thumbnail, url, title
           }
           return post;
         })
-        this.setState({ posts })
+        current.setState({ posts })
       })
       .catch(function (error) {
         console.log(error);
@@ -41,7 +42,7 @@ class App extends Component {
       <div className='app'>
         <div>header</div>
         <div>body</div>
-        <Reddit data={this.state.data} />
+        {this.state.posts.length !== 0 && <Reddit posts={this.state.posts} />}
         <div>footer</div>
       </div>
     );
