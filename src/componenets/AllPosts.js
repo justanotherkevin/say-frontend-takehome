@@ -13,7 +13,13 @@ function AllPosts(props) {
           }
           <span>{post.title}</span>
           <span className="ups">⬆️ {post.ups}</span>
-          <span>{post.subreddit_name_prefixed} {post.created} <a href={`https://www.reddit.com${post.permalink}`} title="Link to reddit post">Reddit</a></span>
+          <span>
+            {post.subreddit_name_prefixed} {post.created}
+            <a
+              href={`https://www.reddit.com${post.permalink}`}
+              title="Link to reddit post">Reddit
+            </a>
+          </span>
 
         </div>
       )}
@@ -22,7 +28,15 @@ function AllPosts(props) {
 }
 
 AllPosts.propTypes = {
-
+  posts: PropTypes.arrayOf(PropTypes.shape({
+    author: PropTypes.string,
+    created: PropTypes.string,
+    subreddit: PropTypes.string,
+    thumbnail: PropTypes.string,
+    title: PropTypes.string,
+    ups: PropTypes.number,
+    url: PropTypes.string,
+  }))
 }
 
 export default AllPosts
