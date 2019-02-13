@@ -13,6 +13,8 @@ For each group of posts in a subreddit, display the subreddit name. Each post of
 
 Once you are done, push the project to your own GitHub/BitBucket/GitLab account (private is perfectly fine).
 */
+import './app.scss';
+
 class App extends Component {
   state = {
     posts: []
@@ -25,11 +27,12 @@ class App extends Component {
         const { data } = res;
         const posts = data.data.children.map(child => {
           console.log(child.data);
-          const { author, created, subreddit, ups, thumbnail, url, title } = child.data
+          const { id, author, created, subreddit, ups, thumbnail, url, title, subreddit_name_prefixed, permalink } = child.data
           let post = {
-            author, created, subreddit, ups, thumbnail, url, title
+            id, author, created, subreddit, ups, thumbnail, url, title, subreddit_name_prefixed, permalink
           }
-          post.created = new Date(post.created).toLocaleDateString("en-US");
+          post.thumbnail = post.thumbnail.includes('http') ? post.thumbnail : null;
+          post.created = new Date(post.created * 1000).toLocaleDateString("en-US");
           return post;
         })
         current.setState({ posts })
@@ -42,10 +45,10 @@ class App extends Component {
     const { posts } = this.state
     return (
       <div className='app'>
-        <div>header</div>
-        <div>body</div>
+        {/* <div>header</div> */}
+        {/* <div>body</div> */}
         {posts.length !== 0 && <Reddit posts={posts} />}
-        <div>footer</div>
+        {/* <div>footer</div> */}
       </div>
     );
   }

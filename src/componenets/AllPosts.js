@@ -3,15 +3,17 @@ import PropTypes from 'prop-types'
 
 function AllPosts(props) {
   return (
-    <div>
+    <div className="posts-wrapper">
       {props.posts.map(post =>
-        <div>
-          {post.thumbnail && <img src={post.thumbnail} alt="" />}
+        <div key={post.id} className="post-wrapper">
+          {post.thumbnail &&
+            <a className="img-wrapper" href={post.url} title="link to source">
+              <img src={post.thumbnail} alt="" />
+            </a>
+          }
           <span>{post.title}</span>
-          <span>{post.created}</span>
-          <span>{post.ups}</span>
-          <span>{post.url}</span>
-          <a href={post.url}>Link</a>
+          <span className="ups">⬆️ {post.ups}</span>
+          <span>{post.subreddit_name_prefixed} {post.created} <a href={`https://www.reddit.com${post.permalink}`} title="Link to reddit post">Reddit</a></span>
 
         </div>
       )}
