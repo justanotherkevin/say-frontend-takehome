@@ -26,7 +26,7 @@ class App extends Component {
       .then(function (res) {
         const { data } = res;
         const posts = data.data.children.map(child => {
-          console.log(child.data);
+          // console.log(child.data);
           const { id, author, created, subreddit, ups, thumbnail, url, title, subreddit_name_prefixed, permalink } = child.data
           let post = {
             id, author, created, subreddit, ups, thumbnail, url, title, subreddit_name_prefixed, permalink
@@ -45,10 +45,7 @@ class App extends Component {
     const { posts } = this.state
     return (
       <div className='app'>
-        {/* <div>header</div> */}
-        {/* <div>body</div> */}
         {posts.length !== 0 && <Reddit posts={posts} />}
-        {/* <div>footer</div> */}
       </div>
     );
   }
